@@ -1,12 +1,12 @@
 format = """
-[](#9018b3)\
+[](#D32F54)\
 $username\
-[](bg:#d32f54 fg:#A52DC7)\
+[](bg:#28842F fg:#E34B6D)\
   ${custom.pwd}\
-[](fg:#e34b6d bg:#dc844a)\
+[](fg:#4BA251 bg:#dc844a)\
   $git_branch\
   $git_status\
-[](fg:#E5A072 bg:#1f6c67)\
+[](fg:#E5A072 bg:#261B79)\
   $c\
   $elixir\
   $elm\
@@ -18,30 +18,36 @@ $username\
   $nim\
   $rust\
   $scala\
-[](fg:#468e88 bg:#28842f)\
+[](fg:#4C4299 bg:#9018b3)\
   $time\
-[ ](fg:#4ba251)\
+[ ](fg:#A52DC7)\
 """
 
 # Disable the blank line at the start of the prompt
-# add_newline = false
+add_newline = false
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#9018b3"
-style_root = "bg:#9018b3"
+style_user = "bg:#D32F54"
+style_root = "bg:#D32F54"
 format = '[$user ]($style)'
 
 [custom.pwd]
-command = "prompt_pwd"
+command = "set _pwd (pwd); if test $_pwd = '/home/enirq'; echo '~/'; else if pwd | grep -q 'enirq'; prompt_pwd; else; pwd; end;"
 when = true
-symbol = "@ "
-style = "bg:#d32f54"
+symbol = " @ "
+style = "bg:#28842F"
 format = "[$symbol($output) ]($style)"
 
+[custom.mode]
+command = "fish_mode_prompt"
+when = true
+style = "bg:#28842F"
+format = "$output($style)"
+
 [directory]
-style = "bg:#d32f54"
+style = "bg:#28842F"
 format = "${custom.pwd}"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -61,22 +67,17 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[ $symbol $context ]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
@@ -90,46 +91,46 @@ format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:#1f6c67"
+style = "bg:#261B79"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#28842f"
+style = "bg:#9018b3"
 format = '[  $time ]($style)'
